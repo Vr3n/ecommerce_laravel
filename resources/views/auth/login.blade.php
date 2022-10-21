@@ -2,13 +2,13 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-16 h-16 fill-current text-gray-500" />
+                <x-application-logo class="w-16 h-16 fill-current text-red-500" />
             </a>
         </x-slot>
 
         <div class="my-4 text-center space-y-2">
             <h3 class="prose prose-2xl text-black text-4xl">Login</h3>
-            <p class="propse prose-base">Login to Buy from us!</p>
+            <p class="propse text-gray-500 prose-base">Login to Buy from us!</p>
         </div>
 
 
@@ -17,7 +17,6 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
-
             <!-- Email Address -->
             <div>
                 <x-input-label for="email" :value="__('Email')" />
@@ -48,7 +47,12 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+
+            <x-primary-button class="w-full my-4">
+                {{ __('Log in') }}
+            </x-primary-button>
+
+            <div class="flex flex-col space-y-2 text-center">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900"
                         href="{{ route('password.request') }}">
@@ -56,10 +60,11 @@
                     </a>
                 @endif
 
-                <x-primary-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-primary-button>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                    {{ __('Don\'t have an account? Register.') }}
+                </a>
             </div>
+
         </form>
     </x-auth-card>
 </x-guest-layout>
