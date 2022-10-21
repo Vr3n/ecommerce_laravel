@@ -2,11 +2,11 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <x-application-logo class="w-10 h-10 fill-current text-gray-500" />
             </a>
         </x-slot>
 
-        <div class="my-4 text-center">
+        <div class="my-4 text-center space-y-2">
             <h3 class="prose prose-2xl text-black text-4xl">Register</h3>
             <p class="prose text-sm">Ceate Account to shop!</p>
         </div>
