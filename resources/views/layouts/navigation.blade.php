@@ -24,7 +24,7 @@
                     <x-slot name="trigger">
                         <button
                             class="flex space-x-2 items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
                             <div class="avatar">
                                 <div class="w-8 rounded-full">
                                     <img src="{{ asset('/storage/images/' .Auth::user()->profile()->first()->profile_picture) }}"
@@ -44,6 +44,10 @@
                     </x-slot>
 
                     <x-slot name="content">
+
+                        <x-dropdown-link :href="route('user.profile', Auth::user()->id)">
+                            Profile
+                        </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
