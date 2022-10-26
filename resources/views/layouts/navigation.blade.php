@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Home') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -25,12 +25,14 @@
                         <button
                             class="flex space-x-2 items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                             <div>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
-                            <div class="avatar">
-                                <div class="w-8 rounded-full">
-                                    <img src="{{ asset('/storage/images/' .Auth::user()->profile()->first()->profile_picture) }}"
-                                        alt="profile picture" />
+                            @if (Route::currentRouteName() != 'user.profile')
+                                <div class="avatar">
+                                    <div class="w-8 rounded-full">
+                                        <img src="{{ asset('/storage/images/' .Auth::user()->profile()->first()->profile_picture) }}"
+                                            alt="profile picture" />
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
