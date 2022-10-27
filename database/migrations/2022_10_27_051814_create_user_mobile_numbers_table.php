@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_addresses', function (Blueprint $table) {
+        Schema::create('user_mobile_numbers', function (Blueprint $table) {
             $table->id();
-            $table->string('building');
-            $table->string('street')->nullable();
-            $table->string('landmark')->nullable();
-            $table->string('city');
-            $table->string('district')->nullable();
-            $table->string('state');
-            $table->string('pin_code');
+            $table->string('mobile_number');
+            $table->boolean('is_primary')->default(false);
             $table->foreignId('user_profile_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_addresses');
+        Schema::dropIfExists('user_mobile_numbers');
     }
 };

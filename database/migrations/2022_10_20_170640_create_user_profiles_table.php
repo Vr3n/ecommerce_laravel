@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('profile_picture')->default('default_profile_picture.png');
-            $table->foreignId('user_addresses_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
