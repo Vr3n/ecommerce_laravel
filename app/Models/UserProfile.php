@@ -12,7 +12,6 @@ class UserProfile extends Model
     protected $fillable = [
         'user_id',
         'profile_picture',
-        'user_addresses_id',
     ];
 
     public function user()
@@ -23,5 +22,10 @@ class UserProfile extends Model
     public function user_addresses()
     {
         return $this->hasMany(UserAddress::class);
+    }
+
+    public function user_mobile_numbers()
+    {
+        return $this->hasMany(UserMobileNumbers::class);
     }
 }
