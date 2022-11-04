@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('district')->nullable();
             $table->string('state');
             $table->string('pin_code');
+            $table->foreignId('user_profile_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

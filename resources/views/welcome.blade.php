@@ -19,6 +19,11 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+         <!-- Fonts -->
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+         <!-- Scripts -->
+         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -128,5 +133,7 @@
                 </div>
             </div>
         </div>
+        @livewire('livewire-ui-modal')
+        <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
     </body>
 </html>
