@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_mobile_numbers', function (Blueprint $table) {
-            $table->id();
-            $table->string('mobile_number');
-            $table->boolean('is_primary')->default(false);
-            $table->timestamps();
+        Schema::table('user_mobile_numbers', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_mobile_numbers');
+        Schema::table('user_mobile_numbers', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 };

@@ -23,9 +23,4 @@ class UserProfile extends Model
     {
         return $this->hasMany(UserAddress::class);
     }
-
-    public function user_mobile_numbers()
-    {
-        return $this->hasMany(UserMobileNumbers::class);
-    }
 }

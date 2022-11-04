@@ -22,12 +22,12 @@
                 </div>
             </div>
             {{-- Personal Detail Card --}}
-            <button type="button" onclick="window.livewire.emit('openModal', 'mobile-number')"
+            <div onclick="window.livewire.emit('openModal', 'mobile-number')"
                 class="card text-center cursor-pointer group transition-all delay-250">
                 <p class="prose prose-base transition-all delay-250 text-black group-hover:text-blue-600">
                     <x-heroicon-o-plus-circle class="w-6 inline-block mr-4" /> Add Mobile Number
                 </p>
-            </button>
+            </div>
         </div>
     </div>
 

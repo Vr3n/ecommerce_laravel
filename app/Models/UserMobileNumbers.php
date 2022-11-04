@@ -9,8 +9,8 @@ class UserMobileNumbers extends Model
 {
     use HasFactory;
 
-    public function user_profile()
+    public function user()
     {
-        return $this->belongsTo(UserProfile::class);
+        return $this->belongsTo(User::class);
     }
 }
