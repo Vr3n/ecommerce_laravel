@@ -12,7 +12,6 @@ class MobileNumber extends Component
 
     public $show = false;
 
-    public $mobile_numbers = [];
 
     protected $listeners = [
         'show' => 'show',
@@ -28,6 +27,9 @@ class MobileNumber extends Component
     {
         return view(
             'livewire.mobile-number',
+            [
+                'mobile_numbers' => Auth::user()->mobile_numbers()->latest()->get()
+            ]
         );
     }
 
@@ -59,6 +61,7 @@ class MobileNumber extends Component
         $this->user_mobile_number->save();
 
         session()->flash('message', 'Mobile Number Successfully saved!');
+        $this->user_mobile_number->mobile_number = '';
     }
 
     public static function closeModalOnClickAway(): bool
