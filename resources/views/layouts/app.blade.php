@@ -34,7 +34,7 @@
             {{ $slot }}
         </main>
     </div>
-    <livewire:livewire-ui-modal />
+    <livewire:mobile-number x-cloak />
     @livewireScripts
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 </body>
