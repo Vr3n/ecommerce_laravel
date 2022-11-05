@@ -4,13 +4,20 @@ namespace App\Http\Livewire;
 
 use App\Models\UserMobileNumbers;
 use Illuminate\Support\Facades\Auth;
-use LivewireUI\Modal\ModalComponent;
+use Livewire\Component;
 
-class MobileNumber extends ModalComponent
+class MobileNumber extends Component
 {
     public UserMobileNumbers $user_mobile_number;
 
-    public UserMobileNumbers $mobile_numbers;
+    public $show = false;
+
+
+    protected $listeners = [
+        'show' => 'show',
+        'close' => 'close',
+    ];
+
 
     protected $rules = [
         'user_mobile_number.mobile_number' => 'required|max:10',
@@ -18,12 +25,27 @@ class MobileNumber extends ModalComponent
 
     public function render()
     {
-        return view('livewire.mobile-number');
+        return view(
+            'livewire.mobile-number',
+            [
+                'mobile_numbers' => Auth::user()->mobile_numbers()->latest()->get()
+            ]
+        );
     }
 
     public function mount()
     {
         $this->user_mobile_number = new UserMobileNumbers();
+    }
+
+    public function show()
+    {
+        $this->show = true;
+    }
+
+    public function close()
+    {
+        $this->show = false;
     }
 
     public function mobileSubmitHandler()
@@ -39,15 +61,16 @@ class MobileNumber extends ModalComponent
         $this->user_mobile_number->save();
 
         session()->flash('message', 'Mobile Number Successfully saved!');
-    }
-
-    public static function modalMaxWidth(): string
-    {
-        return '2xl';
+        $this->user_mobile_number->mobile_number = '';
     }
 
     public static function closeModalOnClickAway(): bool
     {
         return false;
+    }
+
+    public static function modalMaxWidthClass(): string
+    {
+        return 'xl';
     }
 }
