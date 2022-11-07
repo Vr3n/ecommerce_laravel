@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserProfile::class);
     }
+
+    public function mobile_numbers()
+    {
+        return $this->hasMany(UserMobileNumbers::class);
+    }
 }
