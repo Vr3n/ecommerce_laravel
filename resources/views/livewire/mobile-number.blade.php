@@ -15,7 +15,7 @@
             <span class="sr-only">Close modal</span>
         </button>
     </div>
-    <div class="my-6" x-trap="show">
+    <div class="my-6">
         <form wire:submit.prevent="mobileSubmitHandler" method="post">
             @if (session()->has('message'))
                 <div x-data="{ show: true }" x-show="show" x-effect="setTimeout(() => { show=false }, 2000)"
@@ -37,38 +37,48 @@
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
         </form>
     </div>
-    <div class="overflow-scroll">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="py-3 px-6">Mobile Number</th>
-                    <th scope="col" class="py-3 px-6">Is Primary</th>
-                    <th scope="col" class="py-3 px-6">
-                        <span class="sr-only">Edit</span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($mobile_numbers as $mobile_number)
-                    <tr id="{{ $mobile_number->id }}"
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $mobile_number->mobile_number }}</th>
-                        <td class="py-4 px-6">
-                            @if ($mobile_number->is_primary)
-                                ✅
-                            @else
-                                ❌
-                            @endif
-                        </td>
-                        <td class="py-4 px-6 text-right">
-                            <a href="#"
-                                class="font-medium hover:text-blue-600 dark:text-blue-500 cursor-pointer">✏️ Edit</a>
-                        </td>
+    @if ($mobile_numbers)
+        <div class="overflow-scroll">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="py-3 px-6">Mobile Number</th>
+                        <th scope="col" class="py-3 px-6">Is Primary</th>
+                        <th scope="col" class="py-3 px-6">
+                            <span class="sr-only">Delete</span>
+                        </th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    @foreach ($mobile_numbers as $mobile_number)
+                        <tr id="{{ $mobile_number->id }}"
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <th scope="row"
+                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $mobile_number->mobile_number }}</th>
+                            <td class="py-4 px-6">
+                                @if ($mobile_number->is_primary)
+                                    ✅
+                                @else
+                                    ❌
+                                @endif
+                            </td>
+                            <td class="py-4 px-6 text-right">
+                                <form method="POST"
+                                    wire:submit.prevent="deleteUserMobileNumberHandler({{ $mobile_number }})">
+                                    <button type="submit"
+                                        class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">🗑️
+                                        Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @else
+        <div class="my-6">
+            <p class="text-2xl">No Mobile Numbers Added! 📪</p>
+        </div>
+    @endif
 </x-modal>
