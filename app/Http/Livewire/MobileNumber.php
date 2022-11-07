@@ -64,6 +64,14 @@ class MobileNumber extends Component
         $this->user_mobile_number->mobile_number = '';
     }
 
+
+    public function deleteUserMobileNumberHandler(UserMobileNumbers $mobile_number)
+    {
+        $mobile_number->delete();
+
+        session()->flash('message', 'Mobile number Deleted Successfully!');
+    }
+
     public static function closeModalOnClickAway(): bool
     {
         return false;
