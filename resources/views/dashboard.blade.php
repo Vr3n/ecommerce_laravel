@@ -1,16 +1,21 @@
-<x-app-layout>
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot> --}}
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
+<x-app-layout>   
+    <div class="container mx-auto p-6">
+        <div class="flex gap-6">
+            <div class="card w-6/12 text-center">
+                <h2 class="prose text-2xl font-bold">Filter</h2> 
+            </div>
+            <div class="card max-w-none grow">
+                <h1 class="prose text-4xl font-extrabold">Products</h1>
+                <div class="grid pt-4 gap-4 grid-cols-2 place-content-center md:grid-cols-3">
+                    <div class="card h-auto square bg-blue-500"></div>
+                    <div class="card h-auto square bg-blue-500"></div>
+                    <div class="card h-auto square bg-pink-500"></div>
+                    <div class="card h-auto square bg-blue-500"></div>
+                    <div class="card h-auto square bg-blue-500"></div>
+                    <div class="card h-auto square bg-pink-500"></div>
+                    <div class="card h-auto square bg-blue-500"></div>
+                    <div class="card h-auto square bg-pink-500"></div>
+                </div>        
             </div>
         </div>
     </div>
