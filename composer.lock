@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "956f8cd309e8858771287c277d0cc14c",
+    "content-hash": "5a312d6d272a33e7ed076a007ff098c5",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -211,6 +211,62 @@
                 }
             ],
             "time": "2022-08-10T22:54:19+00:00"
+        },
+        {
+            "name": "dcblogdev/laravel-admintw",
+            "version": "v2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dcblogdev/laravel-admintw.git",
+                "reference": "49a62b418b0100969ef0ede9244cc960d4768141"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dcblogdev/laravel-admintw/zipball/49a62b418b0100969ef0ede9244cc960d4768141",
+                "reference": "49a62b418b0100969ef0ede9244cc960d4768141",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "^9.0",
+                "illuminate/support": "^9.0",
+                "php": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dcblogdev\\AdminTw\\AdminTwServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dcblogdev\\AdminTw\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Carr",
+                    "email": "dave@dcblog.dev"
+                }
+            ],
+            "description": "Tailwind admin theme & starter pack for Laravel.",
+            "homepage": "https://github.com/dcblogdev/laravel-admintw",
+            "support": {
+                "issues": "https://github.com/dcblogdev/laravel-admintw/issues",
+                "source": "https://github.com/dcblogdev/laravel-admintw/tree/v2.0.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/dcblogdev",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-09-15T17:16:33+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

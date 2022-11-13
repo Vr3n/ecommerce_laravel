@@ -14,18 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('dashboard');
+})->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
 
-    Route::get('/dashboard/user/{user}/', [UserProfileController::class, 'index'])->name('user.profile');
+    Route::get('/user/{user}/', [UserProfileController::class, 'index'])->name('user.profile');
 });
-
 
 require __DIR__ . '/auth.php';
