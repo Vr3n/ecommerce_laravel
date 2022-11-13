@@ -18,10 +18,11 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('dashboard');
+})->name('home');
+
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
 
     Route::get('/user/{user}/', [UserProfileController::class, 'index'])->name('user.profile');
 });
