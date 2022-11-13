@@ -18,12 +18,18 @@ class UserProfileController extends Controller
 
         // dd($user->profile->id);
         $profile = UserProfile::findOrFail($user->profile->id);
-        // dd($profile->user->id);
 
         if (!Auth::user() || Auth::user()->id != $user->id) {
             return abort(403, 'User Forbidden');
         }
 
-        return view('userprofile.index', ['profile' => $profile]);
+        $mobile_number = Auth::user()->mobile_numbers->where('is_primary', 1);
+        $email = Auth::user()->email;
+
+        if (!$profile) {
+            return redirect()->back();
+        }
+
+        return view('userprofile.index', ["mobile_number" => $mobile_number, "email" => $email]);
     }
 }

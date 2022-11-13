@@ -13,12 +13,15 @@
                     </h2>
                     <p class="hover:text-blue-500">
                         <x-heroicon-o-envelope class="w-6 inline-block text-black mr-1" /> <span
-                            class="prose prose-base">{{ Auth::user()->email }}</span>
+                            class="prose prose-base">{{ $email }}</span>
                     </p>
-                    <p class="hover:text-blue-500">
-                        <x-heroicon-o-phone class="w-6 inline-block text-black mr-1" /> <span
-                            class="prose prose-base">{{ Auth::user()->mobile_numbers->where('is_primary', 1)->firstOrFail()->mobile_number }}</span>
-                    </p>
+                        
+                    @if ($mobile_number->count() != 0) 
+                        <p class="hover:text-blue-500">
+                            <x-heroicon-o-phone class="w-6 inline-block text-black mr-1" /> <span
+                                class="prose prose-base">{{ $mobile_number->first()->mobile_number }}</span>
+                        </p>
+                    @endif
                 </div>
             </div>
             {{-- Personal Detail Card --}}
